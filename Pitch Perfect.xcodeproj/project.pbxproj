@@ -16,6 +16,7 @@
 		D51818301C4EEE330061AEC7 /* Pitch_PerfectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518182F1C4EEE330061AEC7 /* Pitch_PerfectUITests.swift */; };
 		D57E6CE51C5A7E0400B92C48 /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57E6CE41C5A7E0400B92C48 /* PlaySoundsViewController.swift */; };
 		D57E6CE71C5AC1B200B92C48 /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D57E6CE61C5AC1B200B92C48 /* movie_quote.mp3 */; };
+		D5C0AC0C1C6A6ECB00802B11 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0AC0B1C6A6ECB00802B11 /* RecordedAudio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D51818311C4EEE330061AEC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D57E6CE41C5A7E0400B92C48 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
 		D57E6CE61C5AC1B200B92C48 /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
+		D5C0AC0B1C6A6ECB00802B11 /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				D51818181C4EEE330061AEC7 /* LaunchScreen.storyboard */,
 				D518181B1C4EEE330061AEC7 /* Info.plist */,
 				D57E6CE61C5AC1B200B92C48 /* movie_quote.mp3 */,
+				D5C0AC0B1C6A6ECB00802B11 /* RecordedAudio.swift */,
 			);
 			path = "Pitch Perfect";
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5C0AC0C1C6A6ECB00802B11 /* RecordedAudio.swift in Sources */,
 				D51818121C4EEE330061AEC7 /* RecordSoundsViewController.swift in Sources */,
 				D57E6CE51C5A7E0400B92C48 /* PlaySoundsViewController.swift in Sources */,
 				D51818101C4EEE330061AEC7 /* AppDelegate.swift in Sources */,
