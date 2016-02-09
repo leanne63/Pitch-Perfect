@@ -39,8 +39,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        removeWavFiles()
     }
-
+    
+    // MARK: - Utility Functions
+    func removeWavFiles() {
+        let pathURLs = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: .UserDomainMask)
+        if pathURLs.count == 0 {
+            return
+        }
+        
+        let dirURL = pathURLs[0]
+        
+        guard let fileArray = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(dirURL, includingPropertiesForKeys: nil, options: .SkipsHiddenFiles) else {
+            return
+        }
+        
+        let predicate = NSPredicate(format: "SELF MATCHES[c] %@", "wav")
+        
+        let wavOnlyFileArray = fileArray.filter { predicate.evaluateWithObject($0.pathExtension) }
+        
+        for aWavURL in wavOnlyFileArray {
+            do {
+                try NSFileManager.defaultManager().removeItemAtURL(aWavURL)
+            }
+            catch {
+                print("Unable to remove file: \(aWavURL)")
+            }
+        }
+    } // end removeWavFiles()
 
 }
 

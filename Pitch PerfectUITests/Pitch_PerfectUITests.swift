@@ -33,4 +33,9 @@ class Pitch_PerfectUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func testRecordButton() {
+        XCUIApplication().buttons["Record Button"].tap()
+        
+    }
+    
 }
