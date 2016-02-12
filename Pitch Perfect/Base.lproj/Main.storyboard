@@ -26,8 +26,8 @@
                                     <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lqs-9c-Q84"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFP-2e-XvH">
-                                <rect key="frame" x="274" y="358" width="53" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFP-2e-XvH">
+                                <rect key="frame" x="253" y="358" width="94" height="17"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.14509803921568626" green="0.28235294117647058" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -99,10 +99,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="391-h6-oVw" userLabel="Chipmunk Button">
                                 <rect key="frame" x="100" y="250" width="100" height="100"/>
                                 <state key="normal" image="chipmunkButton"/>
+                                <connections>
+                                    <action selector="playChipmunkAudio:" destination="ovN-7t-dsg" eventType="touchUpInside" id="AHZ-sI-nKa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIi-wN-qtu" userLabel="Darth Vader Button">
                                 <rect key="frame" x="400" y="250" width="100" height="100"/>
                                 <state key="normal" image="darthvaderButton"/>
+                                <connections>
+                                    <action selector="playDarthVaderAudio:" destination="ovN-7t-dsg" eventType="touchUpInside" id="puq-NX-BJ9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>

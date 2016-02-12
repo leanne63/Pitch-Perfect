@@ -106,12 +106,12 @@
 				D518180F1C4EEE330061AEC7 /* AppDelegate.swift */,
 				D51818111C4EEE330061AEC7 /* RecordSoundsViewController.swift */,
 				D57E6CE41C5A7E0400B92C48 /* PlaySoundsViewController.swift */,
+				D5C0AC0B1C6A6ECB00802B11 /* RecordedAudio.swift */,
 				D51818131C4EEE330061AEC7 /* Main.storyboard */,
 				D51818161C4EEE330061AEC7 /* Assets.xcassets */,
 				D51818181C4EEE330061AEC7 /* LaunchScreen.storyboard */,
 				D518181B1C4EEE330061AEC7 /* Info.plist */,
 				D57E6CE61C5AC1B200B92C48 /* movie_quote.mp3 */,
-				D5C0AC0B1C6A6ECB00802B11 /* RecordedAudio.swift */,
 			);
 			path = "Pitch Perfect";
 			sourceTree = "<group>";
