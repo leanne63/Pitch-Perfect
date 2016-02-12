@@ -82,7 +82,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82C-h6-CKn" userLabel="Stop Button">
-                                <rect key="frame" x="275" y="425" width="50" height="50"/>
+                                <rect key="frame" x="275" y="500" width="50" height="50"/>
                                 <state key="normal" image="stopButton"/>
                                 <connections>
                                     <action selector="stopAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LBV-wn-CRS"/>
@@ -110,16 +110,22 @@
                                     <action selector="playDarthVaderAudio:" destination="ovN-7t-dsg" eventType="touchUpInside" id="puq-NX-BJ9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuu-Nc-Joi" userLabel="Reverb Button">
+                                <rect key="frame" x="110" y="410" width="80" height="80"/>
+                                <state key="normal" image="reverbButton"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="RvE-cc-08S" firstAttribute="centerX" secondItem="cTA-3d-prz" secondAttribute="centerXWithinMargins" multiplier="150%" id="Dgq-NG-1cp"/>
-                            <constraint firstItem="82C-h6-CKn" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" multiplier="150%" id="Hd7-R1-8Ay"/>
+                            <constraint firstItem="Yuu-Nc-Joi" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" multiplier="150%" id="EoD-oQ-yqD"/>
+                            <constraint firstItem="82C-h6-CKn" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" multiplier="175%" id="Hd7-R1-8Ay"/>
                             <constraint firstItem="tIi-wN-qtu" firstAttribute="centerX" secondItem="RvE-cc-08S" secondAttribute="centerX" id="UY6-4w-J2c"/>
                             <constraint firstItem="tIi-wN-qtu" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" id="UsW-Fh-JM3"/>
                             <constraint firstItem="N0H-Xg-tge" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" multiplier="50%" id="atH-vz-pGI"/>
                             <constraint firstItem="82C-h6-CKn" firstAttribute="centerX" secondItem="cTA-3d-prz" secondAttribute="centerX" id="ch7-Dh-9Sx"/>
                             <constraint firstItem="N0H-Xg-tge" firstAttribute="centerX" secondItem="cTA-3d-prz" secondAttribute="centerXWithinMargins" multiplier="50%" id="hPi-Nh-pWh"/>
+                            <constraint firstItem="Yuu-Nc-Joi" firstAttribute="centerX" secondItem="391-h6-oVw" secondAttribute="centerX" id="kzJ-nQ-CHx"/>
                             <constraint firstItem="RvE-cc-08S" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" multiplier="50%" id="q5B-if-K76"/>
                             <constraint firstItem="391-h6-oVw" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" id="rLv-km-QXe"/>
                             <constraint firstItem="391-h6-oVw" firstAttribute="centerX" secondItem="N0H-Xg-tge" secondAttribute="centerX" id="x1O-ry-7hI"/>
@@ -158,6 +164,7 @@
         <image name="darthvaderButton" width="100" height="100"/>
         <image name="fastButton" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="reverbButton" width="80" height="80"/>
         <image name="slowButton" width="100" height="100"/>
         <image name="stopButton" width="50" height="50"/>
     </resources>
