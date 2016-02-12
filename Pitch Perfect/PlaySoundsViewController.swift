@@ -90,19 +90,24 @@ class PlaySoundsViewController: UIViewController {
     func playAudioAtPitch(pitchVal:Float) {
         resetAudio()
         
-        let audioPlayerNode = AVAudioPlayerNode()
+		// set up audio player node
+		let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         
-        let pitchEffect = AVAudioUnitTimePitch()
+		// set up pitch effect node
+		let pitchEffect = AVAudioUnitTimePitch()
         pitchEffect.pitch = pitchVal
         audioEngine.attachNode(pitchEffect)
         
-        audioEngine.connect(audioPlayerNode, to: pitchEffect, format: nil)
+		// connect nodes to each other through audio engine
+		audioEngine.connect(audioPlayerNode, to: pitchEffect, format: nil)
         audioEngine.connect(pitchEffect, to: audioEngine.outputNode, format: nil)
         
-        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+		// schedule the recording to play
+		audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         
-        try! audioEngine.start()
+		// start the engine and play the audio
+		try! audioEngine.start()
         
         audioPlayerNode.play()
         

@@ -27,7 +27,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewWillAppear(animated: Bool) {
         stopButton.hidden = true
         recordButton.enabled = true
-        recordingLabel.hidden = false
+        recordingLabel.text = "Tap to Record"
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,9 +45,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     // MARK: - InterfaceBuilder Actions
     @IBAction func recordAudio(sender: UIButton) {
-        recordingLabel.hidden = false
         stopButton.hidden = false
         recordButton.enabled = false
+        recordingLabel.text = "Recording..."
         
         // set the directory for saving our file - the first one in the search path is the one we want
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
@@ -107,4 +107,3 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
 }
-

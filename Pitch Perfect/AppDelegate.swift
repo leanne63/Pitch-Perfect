@@ -50,8 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // get directories our app is allowed to use
         let pathURLs = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: .UserDomainMask)
         
-        // if no directories were found, exit the function
-        if pathURLs.count == 0 {
+        // at least one directory must exist for us to continue
+		// (note: used this way per Swift Guidelines at: https://github.com/github/swift-style-guide )
+		// (could be if, but guard produces compile-time error that'll ensure we're exiting in this case)
+        guard pathURLs.count != 0 else {
             return
         }
         
@@ -85,4 +87,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     } // end removeWavFiles()
 
 }
-
