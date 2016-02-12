@@ -43,27 +43,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Utility Functions
+    /**
+        Removes .wav files from app's directory.
+    */
     func removeWavFiles() {
+        // get directories our app is allowed to use
         let pathURLs = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: .UserDomainMask)
+        
+        // if no directories were found, exit the function
         if pathURLs.count == 0 {
             return
         }
         
+        // we found directories, so grab the first one
         let dirURL = pathURLs[0]
         
+        // try to retrieve the contents of the directory
+        // if the results are nil, we’ll exit; otherwise we can continue
+        //    without implicitly unwrapping our variable (due to guard)
         guard let fileArray = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(dirURL, includingPropertiesForKeys: nil, options: .SkipsHiddenFiles) else {
             return
         }
         
+        // create a string to describe our sound file’s extension
         let predicate = NSPredicate(format: "SELF MATCHES[c] %@", "wav")
         
+        // use our file list array to locate file paths with the right extension
         let wavOnlyFileArray = fileArray.filter { predicate.evaluateWithObject($0.pathExtension) }
         
+        // iterate through each path in our new wav-only file list
         for aWavURL in wavOnlyFileArray {
             do {
+                // try removing the current item; if we get an error, catch it
                 try NSFileManager.defaultManager().removeItemAtURL(aWavURL)
             }
             catch {
+                // we caught an error, so do something about it
                 print("Unable to remove file: \(aWavURL)")
             }
         }

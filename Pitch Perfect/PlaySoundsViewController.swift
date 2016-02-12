@@ -11,33 +11,36 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
     
+    // MARK: - Global Variables
     var audioPlayer: AVAudioPlayer!
     var receivedAudio: RecordedAudio!
     var audioEngine: AVAudioEngine!
     var audioFile:  AVAudioFile!
     
+    // MARK: - UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // set up our audio player, engine, and recording, so ready to play user selection
         audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL)
         audioPlayer.enableRate = true
         audioPlayer.rate = 1.0
         
         audioEngine = AVAudioEngine()
+        
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathURL)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func playAudioSlow(sender: UIButton) {
-        resetAudio()
         let slowRate: Float = 0.5
         playAudioAtRate(slowRate)
     }
 
+    // MARK: - InterfaceBuilder Actions
     @IBAction func playAudioFast(sender: UIButton) {
         let fastRate: Float = 1.5
         playAudioAtRate(fastRate)
@@ -56,14 +59,34 @@ class PlaySoundsViewController: UIViewController {
     }
     
     // MARK: - Utility Functions
+    /**
+    Stops and resets audio player and engine.
+    */
+    func resetAudio() {
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+    }
+    
+    /**
+        Plays audio at specified rate.
+        
+        - Parameter rate: Speed at which to play audio.
+     */
     func playAudioAtRate(rate: Float) {
         resetAudio()
         
         audioPlayer.currentTime = 0.0
         audioPlayer.rate = rate
+        
         audioPlayer.play()
     }
     
+    /**
+        Plays audio at specified pitch.
+     
+        - Parameter pitchVal: Pitch at which to play audio.
+     */
     func playAudioAtPitch(pitchVal:Float) {
         resetAudio()
         
@@ -85,10 +108,4 @@ class PlaySoundsViewController: UIViewController {
         
     }
     
-    func resetAudio() {
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
-    }
-
 }
