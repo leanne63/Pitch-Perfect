@@ -55,9 +55,64 @@ class PlaySoundsViewController: UIViewController {
     }
     
 	@IBAction func playReverbAudio(sender: UIButton) {
-		//playAudioAtPitch(1000.0)
+		resetAudio()
+
+		// set up audio player node
+		let audioPlayerNode = AVAudioPlayerNode()
+		audioEngine.attachNode(audioPlayerNode)
+
+		// set up reverb effect node
+		let reverbEffect = AVAudioUnitReverb()
+		reverbEffect.loadFactoryPreset(.Cathedral)
+		reverbEffect.wetDryMix = 25
+		audioEngine.attachNode(reverbEffect)
+
+		// connect nodes to each other through audio engine
+		audioEngine.connect(audioPlayerNode, to: reverbEffect, format: nil)
+		audioEngine.connect(reverbEffect, to: audioEngine.outputNode, format: nil)
+
+		// schedule the recording to play
+		audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+
+		// start the engine and play the audio
+		try! audioEngine.start()
+
+		audioPlayerNode.play()
+
 	}
 
+	@IBAction func playEchoAudio(sender: UIButton) {
+		resetAudio()
+
+		// set up audio player node
+		let audioPlayerNode = AVAudioPlayerNode()
+		audioEngine.attachNode(audioPlayerNode)
+
+		// set up delay node
+		let delayUnit = AVAudioUnitDelay()
+		delayUnit.wetDryMix = 0.0
+		audioEngine.attachNode(delayUnit)
+
+		// set up reverb effect node
+		let reverbEffect = AVAudioUnitReverb()
+		reverbEffect.loadFactoryPreset(.Cathedral)
+		reverbEffect.wetDryMix = 25.0
+		audioEngine.attachNode(reverbEffect)
+
+		// connect nodes to each other through audio engine
+		audioEngine.connect(audioPlayerNode, to: delayUnit, format: nil)
+		audioEngine.connect(delayUnit, to: reverbEffect, format: nil)
+		audioEngine.connect(reverbEffect, to: audioEngine.outputNode, format: nil)
+
+		// schedule the recording to play
+		audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+
+		// start the engine and play the audio
+		try! audioEngine.start()
+
+		audioPlayerNode.play()
+		
+	}
     @IBAction func stopSound(sender: UIButton) {
         resetAudio()
     }
