@@ -54,6 +54,10 @@ class PlaySoundsViewController: UIViewController {
         playAudioAtPitch(-1000.0)
     }
     
+	@IBAction func playReverbAudio(sender: UIButton) {
+		//playAudioAtPitch(1000.0)
+	}
+
     @IBAction func stopSound(sender: UIButton) {
         resetAudio()
     }
