@@ -140,7 +140,6 @@ class PlaySoundsViewController: UIViewController {
 
 		// set up delay node for echo
 		let delayUnit = AVAudioUnitDelay()
-		//delayUnit.delayTime = 1.0
 		delayUnit.wetDryMix = echoWetDryMix
 		audioEngine.attachNode(delayUnit)
 
