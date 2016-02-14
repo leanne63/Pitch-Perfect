@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXC-uV-BX3">
-                                <rect key="frame" x="275" y="425" width="50" height="50"/>
+                                <rect key="frame" x="275" y="500" width="50" height="50"/>
                                 <state key="normal" image="stopButton"/>
                                 <connections>
                                     <action selector="stopAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="REl-Bk-NhD"/>
@@ -42,7 +42,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="hXC-uV-BX3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="2yo-ly-EHE"/>
+                            <constraint firstItem="hXC-uV-BX3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.75" id="2yo-ly-EHE"/>
                             <constraint firstItem="hXC-uV-BX3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5qV-u2-UsI"/>
                             <constraint firstItem="MnC-1C-D3N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5zD-cq-mcC"/>
                             <constraint firstItem="eFP-2e-XvH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GSe-97-BpL"/>
@@ -130,7 +130,7 @@
                             <constraint firstItem="RvE-cc-08S" firstAttribute="centerX" secondItem="cTA-3d-prz" secondAttribute="centerXWithinMargins" multiplier="150%" id="Dgq-NG-1cp"/>
                             <constraint firstItem="Yuu-Nc-Joi" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" multiplier="150%" id="EoD-oQ-yqD"/>
                             <constraint firstItem="N6l-0K-ZyL" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" multiplier="150%" id="FOY-we-FzT"/>
-                            <constraint firstItem="82C-h6-CKn" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" multiplier="175%" id="Hd7-R1-8Ay"/>
+                            <constraint firstItem="82C-h6-CKn" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" multiplier="1.75" id="Hd7-R1-8Ay"/>
                             <constraint firstItem="tIi-wN-qtu" firstAttribute="centerX" secondItem="RvE-cc-08S" secondAttribute="centerX" id="UY6-4w-J2c"/>
                             <constraint firstItem="tIi-wN-qtu" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" id="UsW-Fh-JM3"/>
                             <constraint firstItem="N0H-Xg-tge" firstAttribute="centerY" secondItem="cTA-3d-prz" secondAttribute="centerY" multiplier="50%" id="atH-vz-pGI"/>
