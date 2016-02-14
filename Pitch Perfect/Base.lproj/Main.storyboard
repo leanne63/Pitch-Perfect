@@ -39,15 +39,21 @@
                                     <action selector="stopAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="REl-Bk-NhD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U37-r9-b0v" userLabel="Pause Button">
+                                <rect key="frame" x="275" y="434" width="50" height="50"/>
+                                <state key="normal" image="pauseButtonBlue"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hXC-uV-BX3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.75" id="2yo-ly-EHE"/>
                             <constraint firstItem="hXC-uV-BX3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5qV-u2-UsI"/>
                             <constraint firstItem="MnC-1C-D3N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5zD-cq-mcC"/>
+                            <constraint firstItem="U37-r9-b0v" firstAttribute="bottom" secondItem="hXC-uV-BX3" secondAttribute="top" constant="-16" id="Dfu-3r-EkU"/>
                             <constraint firstItem="eFP-2e-XvH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GSe-97-BpL"/>
                             <constraint firstItem="eFP-2e-XvH" firstAttribute="top" secondItem="MnC-1C-D3N" secondAttribute="bottom" constant="8" id="IOJ-n8-eqn"/>
                             <constraint firstItem="MnC-1C-D3N" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LfO-92-aYt"/>
+                            <constraint firstItem="U37-r9-b0v" firstAttribute="centerX" secondItem="hXC-uV-BX3" secondAttribute="centerX" id="PMH-yv-1tk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="ulx-WQ-emI"/>
@@ -177,6 +183,7 @@
         <image name="echoButton" width="80" height="80"/>
         <image name="fastButton" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="pauseButtonBlue" width="50" height="50"/>
         <image name="reverbButton" width="80" height="80"/>
         <image name="slowButton" width="100" height="100"/>
         <image name="stopButton" width="50" height="50"/>
