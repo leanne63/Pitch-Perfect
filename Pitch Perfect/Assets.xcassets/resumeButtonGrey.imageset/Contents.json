@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "resume_80_grey.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "resume_160_grey.png",
+      "filename" : "resume_100_grey.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "resume_200_grey.png",
       "scale" : "3x"
     }
   ],
