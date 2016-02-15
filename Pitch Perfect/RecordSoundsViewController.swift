@@ -110,7 +110,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 			configureButtonsForRecordingStatus(.Recording)
 			audioRecorder.record()
 		}
-		print("-----")
 	}
 
 
