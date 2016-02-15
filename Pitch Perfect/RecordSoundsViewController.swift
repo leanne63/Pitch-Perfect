@@ -10,24 +10,32 @@ import UIKit
 import AVFoundation
 
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
+	// MARK: - Enums
+	enum RecordingStatus {
+		case Stopped
+		case Paused
+		case Recording
+	}
 
     // MARK: - Global Variables
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
+	@IBOutlet weak var pauseResumeButton: UIButton!
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
     
-    // MARK: - UIViewController Overrides
+
+	// MARK: - UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
-        stopButton.hidden = true
-        recordButton.enabled = true
-        recordingLabel.text = "Tap to Record"
+		super.viewWillAppear(animated)
+
+		configureButtonsForRecordingStatus(.Stopped)
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,13 +50,20 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             playSoundsVC.receivedAudio = data
         }
     }
-    
+
+
     // MARK: - InterfaceBuilder Actions
     @IBAction func recordAudio(sender: UIButton) {
-        stopButton.hidden = false
-        recordButton.enabled = false
-        recordingLabel.text = "Recording..."
-        
+		// configure buttons
+		recordButton.enabled = false
+
+		recordingLabel.text = "Recording..."
+
+		pauseResumeButton.hidden = false
+		pauseResumeButton.imageView?.image = UIImage(named: "pauseButtonBlue")
+
+		stopButton.hidden = false
+
         // set the directory for saving our file - the first one in the search path is the one we want
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         
@@ -74,17 +89,31 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         
         audioRecorder.record()
     }
-    
+
     @IBAction func stopAudio(sender: UIButton) {
-        recordingLabel.hidden = true
-        stopButton.hidden = true
-        recordButton.enabled = true
-        
         audioRecorder.stop()
+
         let session = AVAudioSession.sharedInstance()
         try! session.setActive(false)
+
+		// configure buttons
+		configureButtonsForRecordingStatus(.Stopped)
+
     }
-    
+
+	@IBAction func pauseOrResumeRecording(sender: UIButton) {
+		if audioRecorder.recording {
+			configureButtonsForRecordingStatus(.Paused)
+			audioRecorder.pause()
+		}
+		else {
+			configureButtonsForRecordingStatus(.Recording)
+			audioRecorder.record()
+		}
+		print("-----")
+	}
+
+
     // MARK: - AVAudioRecorderDelegate Functions
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
@@ -104,7 +133,48 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             recordButton.enabled = true
 			recordingLabel.text = "Tap to Record"
             stopButton.hidden = true
+			pauseResumeButton.hidden = true
         }
     }
+
+	// MARK: - Utility Functions
+	func configureButtonsForRecordingStatus(recordingStatus: RecordingStatus) {
+		pauseResumeButton.adjustsImageWhenHighlighted = false
+
+		switch recordingStatus {
+
+		case .Stopped:
+			recordButton.enabled = true
+
+			recordingLabel.text = "Tap to Record"
+
+			stopButton.hidden = true
+
+			pauseResumeButton.hidden = true
+
+		case .Paused:
+			recordButton.enabled = false
+
+			recordingLabel.text = "Recording Paused"
+
+			let resumeImage = UIImage(named: "resumeButtonBlue")
+			pauseResumeButton.setImage(resumeImage, forState: .Normal)
+			pauseResumeButton.hidden = false
+
+			stopButton.hidden = false
+
+		case .Recording:
+			recordButton.enabled = false
+
+			recordingLabel.text = "Recording..."
+
+			let resumeImage = UIImage(named: "pauseButtonBlue")
+			pauseResumeButton.setImage(resumeImage, forState: .Normal)
+			pauseResumeButton.hidden = false
+
+			stopButton.hidden = false
+			
+		}
+	}
     
 }
