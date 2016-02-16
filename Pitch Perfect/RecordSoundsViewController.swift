@@ -17,7 +17,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 		case Recording
 	}
 
-    // MARK: - Global Variables
+    // MARK: - Properties
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!

@@ -11,7 +11,7 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
     
-    // MARK: - Global Variables
+    // MARK: - Properties
     var audioPlayer: AVAudioPlayer!
     var receivedAudio: RecordedAudio!
     var audioEngine: AVAudioEngine!
