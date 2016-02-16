@@ -123,7 +123,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             recordedAudio = RecordedAudio(fileURL: filePathURL, fileName: fileTitle!)
             
             // send the recorded audio over to the next view controller
-            self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
+            performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         }
         else {
             // recording failed! Let us know and reset the interface appearance appropriately
