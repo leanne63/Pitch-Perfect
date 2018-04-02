@@ -22,51 +22,51 @@ class PlaySoundsViewController: UIViewController {
         super.viewDidLoad()
 
         // set up our audio player, engine, and recording, so ready to play user selection
-        audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathURL)
+        audioPlayer = try! AVAudioPlayer(contentsOf: receivedAudio.filePathURL as URL)
         audioPlayer.enableRate = true
         audioPlayer.rate = 1.0
         
         audioEngine = AVAudioEngine()
         
-        audioFile = try! AVAudioFile(forReading: receivedAudio.filePathURL)
+        audioFile = try! AVAudioFile(forReading: receivedAudio.filePathURL as URL)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func playAudioSlow(sender: UIButton) {
+    @IBAction func playAudioSlow(_ sender: UIButton) {
         let slowRate: Float = 0.5
         playAudioAtRate(slowRate)
     }
 
     // MARK: - InterfaceBuilder Actions
-    @IBAction func playAudioFast(sender: UIButton) {
+    @IBAction func playAudioFast(_ sender: UIButton) {
         let fastRate: Float = 1.5
         playAudioAtRate(fastRate)
     }
     
-    @IBAction func playChipmunkAudio(sender: UIButton) {
+    @IBAction func playChipmunkAudio(_ sender: UIButton) {
         playAudioAtPitch(1000.0)
     }
     
-    @IBAction func playDarthVaderAudio(sender: UIButton) {
+    @IBAction func playDarthVaderAudio(_ sender: UIButton) {
         playAudioAtPitch(-1000.0)
     }
 
-	@IBAction func playReverbAudio(sender: UIButton) {
+	@IBAction func playReverbAudio(_ sender: UIButton) {
 		let echoWetDryMix: Float = 0.0
 		let reverbMix: Float = 25.0
 		playAudioWithEffect(echoWetDryMix, reverbWetDryMix: reverbMix)
 	}
 
-	@IBAction func playEchoAudio(sender: UIButton) {
+	@IBAction func playEchoAudio(_ sender: UIButton) {
 		let echoWetDryMix: Float = 10.0
 		let reverbMix: Float = 0.0
 		playAudioWithEffect(echoWetDryMix, reverbWetDryMix: reverbMix)
 	}
 
-    @IBAction func stopSound(sender: UIButton) {
+    @IBAction func stopSound(_ sender: UIButton) {
         resetAudio()
     }
     
@@ -85,7 +85,7 @@ class PlaySoundsViewController: UIViewController {
         
         - Parameter rate: Speed at which to play audio.
      */
-    func playAudioAtRate(rate: Float) {
+    func playAudioAtRate(_ rate: Float) {
         resetAudio()
         
         audioPlayer.currentTime = 0.0
@@ -99,24 +99,24 @@ class PlaySoundsViewController: UIViewController {
      
         - Parameter pitchVal: Pitch at which to play audio.
      */
-    func playAudioAtPitch(pitchVal:Float) {
+    func playAudioAtPitch(_ pitchVal:Float) {
         resetAudio()
         
 		// set up audio player node
 		let audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attach(audioPlayerNode)
         
 		// set up pitch effect node
 		let pitchEffect = AVAudioUnitTimePitch()
         pitchEffect.pitch = pitchVal
-        audioEngine.attachNode(pitchEffect)
+        audioEngine.attach(pitchEffect)
         
 		// connect nodes to each other through audio engine
 		audioEngine.connect(audioPlayerNode, to: pitchEffect, format: nil)
         audioEngine.connect(pitchEffect, to: audioEngine.outputNode, format: nil)
         
 		// schedule the recording to play
-		audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+		audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
         
 		// start the engine and play the audio
 		try! audioEngine.start()
@@ -131,23 +131,23 @@ class PlaySoundsViewController: UIViewController {
 	- Parameter echoWetDryMix: Wet/Dry mix for the echo portion of the effect.
 	- Parameter reverbWetDryMix: Wet/Dry mix for the reverb portion of the effect.
 	*/
-	func playAudioWithEffect(echoWetDryMix: Float, reverbWetDryMix: Float) {
+	func playAudioWithEffect(_ echoWetDryMix: Float, reverbWetDryMix: Float) {
 		resetAudio()
 
 		// set up audio player node
 		let audioPlayerNode = AVAudioPlayerNode()
-		audioEngine.attachNode(audioPlayerNode)
+		audioEngine.attach(audioPlayerNode)
 
 		// set up delay node for echo
 		let delayUnit = AVAudioUnitDelay()
 		delayUnit.wetDryMix = echoWetDryMix
-		audioEngine.attachNode(delayUnit)
+		audioEngine.attach(delayUnit)
 
 		// set up reverb effect node
 		let reverbEffect = AVAudioUnitReverb()
-		reverbEffect.loadFactoryPreset(.Cathedral)
+		reverbEffect.loadFactoryPreset(.cathedral)
 		reverbEffect.wetDryMix = reverbWetDryMix
-		audioEngine.attachNode(reverbEffect)
+		audioEngine.attach(reverbEffect)
 
 		// connect nodes to each other through audio engine
 		audioEngine.connect(audioPlayerNode, to: delayUnit, format: nil)
@@ -155,7 +155,7 @@ class PlaySoundsViewController: UIViewController {
 		audioEngine.connect(reverbEffect, to: audioEngine.outputNode, format: nil)
 
 		// schedule the recording to play
-		audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+		audioPlayerNode.scheduleFile(audioFile, at: nil, completionHandler: nil)
 
 		// start the engine and play the audio
 		try! audioEngine.start()

@@ -12,7 +12,7 @@ import Foundation
 class RecordedAudio {
 
     // MARK: - Global Variables
-    let filePathURL: NSURL!
+    let filePathURL: URL!
     let title: String!
     
     // MARK: - Init Functions
@@ -24,7 +24,7 @@ class RecordedAudio {
     
     - Returns: An audio recording.
     */
-    init(fileURL: NSURL, fileName: String) {
+    init(fileURL: URL, fileName: String) {
         filePathURL = fileURL
         title = fileName
     }
